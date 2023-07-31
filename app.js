@@ -4,7 +4,7 @@ const cors = require("cors");
 const fs = require('fs');
 
 ///init middleware//////////////////////////////
-app.use(cors());
+app.use(cors({ credentials: true, origin: true }));
 app.use(express.json());
 
 //in this Special case preload the json into memoery
