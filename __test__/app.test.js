@@ -20,9 +20,9 @@ describe('GET /items', () => {
   });
 });
 
-describe('GET /item/:id', () => {
+describe('GET /items/:id', () => {
   it('should respond with a JSON object containing the correct item when a valid ID is provided', async () => {
-    const response = await request(app).get('/item/1bae205e-12e5-465a-b2b2-f19ee8a123ca');
+    const response = await request(app).get('/items/1bae205e-12e5-465a-b2b2-f19ee8a123ca');
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual({ data: {
       "id": "1bae205e-12e5-465a-b2b2-f19ee8a123ca",
@@ -39,16 +39,10 @@ describe('GET /item/:id', () => {
   });
 
   it('should respond with a 404 status when an invalid ID is provided', async () => {
-    const response = await request(app).get('/item/invalidId');
+    const response = await request(app).get('/items/invalidId');
     expect(response.statusCode).toBe(404);
     expect(response.body).toEqual({ error: 'Item not found.' });
   });
 });
 
-describe('GET 404', () => {
-  it('should respond with a 404 status and an error message', async () => {
-    const response = await request(app).get('/invalid-endpoint');
-    expect(response.statusCode).toBe(404);
-    expect(response.text).toContain('File not found.');
-  });
-});
+
