@@ -30,7 +30,7 @@ app.get('/items', async(req, res) => {
   }
 });
 
-app.get('/item/:id', async(req, res) => {
+app.get('/items/:id', async(req, res) => {
   try {
     const {id} = req.params;
     const ret = data.find(el => el.id === id);
@@ -40,13 +40,13 @@ app.get('/item/:id', async(req, res) => {
       res.json({"data": ret});
     } 
   } catch (error) {
-    res.status(500).json({error: "Server error."});
+    res.status(500).json({error: error.message});
     error_handle(error);
   }
 });
 ////404////////////////////////////////////////////
 app.get("*", (req, res) => {
-  res.status(404).send(`<h3>404</h3><p>File not found.</p>`);
+  res.status(404).json({error: "404"});
 });
 ////////////////////////////////////////////////
 module.exports = app;
