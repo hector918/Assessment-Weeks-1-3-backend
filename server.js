@@ -7,8 +7,8 @@ const dotenv = require("dotenv");
 // CONFIGURATION
 dotenv.config();
 var {PORT, HTTPS_PORT} = process.env;
-PORT = PORT ? PORT : 8888;
-HTTPS_PORT = HTTPS_PORT ? HTTPS_PORT : 8000;
+PORT = PORT || 8888;
+HTTPS_PORT = HTTPS_PORT || 8000;
 const options = {
   key: fs.readFileSync('./sslcert/localhost-key.pem', 'utf8'),
   cert: fs.readFileSync('./sslcert/localhost.pem', 'utf8')
