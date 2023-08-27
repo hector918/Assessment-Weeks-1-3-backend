@@ -35,7 +35,7 @@ app.get('/items/:id', async(req, res) => {
     const {id} = req.params;
     const ret = data.find(el => el.id === id);
     if(ret === undefined){
-      res.status(404).json({"error": 'Item not found.'});
+      res.status(404).json({"error": `Item ${id} not found.`});
     }else{
       res.json({"data": ret});
     } 
